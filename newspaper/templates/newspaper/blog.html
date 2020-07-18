@@ -1,0 +1,22 @@
+{% extends 'newspaper/layout.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        {% for new in required_blog %}
+        <section style="margin-left: 2%; margin-right: 2%;">
+            <div style="width: 80%;">
+                <p class="title-page"><strong>{{new.title}}</strong></p>
+            </div>
+            <div style="width: 100%;">
+                <img class="img-fluid" src="{{new.image.url}}" style="margin-bottom:20px ;"/>
+            </div>
+            <div style="width: 80%;">
+                <p class="page-content">{{new.content|linebreaksbr}}</p>
+                <p class="date">{{new.new_date}}</p>
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+<div>
+{% endblock %}
