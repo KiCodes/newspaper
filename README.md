@@ -15,3 +15,5 @@ To reduce loading times, I added a paginator to the section of each category and
 The page is responsive for mobiles, ipads and for different types of monitors.
 
 I tried to compile some of the activities done during the course in this last project and make them as tedious as I can, that's why I think this web application is more complex than the ones we did during the course.
+
+Youtube: https://www.youtube.com/watch?v=5KNpTBDCp_U&t
