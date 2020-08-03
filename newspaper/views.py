@@ -38,8 +38,23 @@ def index(request):
         second = New.objects.filter(primary=True).order_by('id').reverse()[1:3]
         word = New.objects.filter(category=3).order_by('id').reverse()[0:3]
 
-        return render(request, "newspaper/index.html", {'page_obj': news, 'categories': categories, 'last': last, 'today': today, 'blogs': blogs,
-        'geodata': geodata, 'temp': temp, 'img': img, 'description': description, 'total_covid': total_covid, 'second': second, 'opinion': word, "form":Search()})
+        context = {
+            'page_obj': news,
+            'categories': categories,
+            'last': last,
+            'today': today,
+            'blogs': blogs,
+            'geodata': geodata,
+            'temp': temp,
+            'img': img,
+            'description': description,
+            'total_covid': total_covid,
+            'second': second,
+            'opinion': word,
+            'form': Search()
+        }
+
+        return render(request, "newspaper/index.html", context)
     else:
         news = New.objects.all().order_by('id').reverse()
         searched = []
@@ -49,7 +64,14 @@ def index(request):
             for new in news:
                 if item in news:
                     page = New.objects.filter(title=item)
-                    return render(request, "newspaper/new.html", {'news': page, 'today': today, "form":Search()})
+
+                    context = {
+                        'news': page,
+                        'today': today,
+                        'form': Search()
+                    }
+
+                    return render(request, "newspaper/new.html", context)
                 if item.lower() in new.title.lower():
                     searched.append(new)
             if searched == []:
@@ -66,11 +88,34 @@ def category(request, category):
     page_obj = paginator.get_page(page_number)
 
     if not news:
-        return render(request, "newspaper/error.html", {'message': "OOPS! It looks like we don't have news to this category", 'categories': categories,'today': today,'blogs': blogs,
-        'geodata': geodata, 'temp': temp, 'img': img, 'description': description, "form":Search()})
 
-    return render(request, "newspaper/category.html", {'page_obj': page_obj, 'categories': categories,'today': today, 'blogs': blogs,
-    'geodata': geodata, 'temp': temp, 'img': img, 'description': description, "form":Search()})
+        context = {
+            'message': "OOPS! It looks like we don't have news to this category",
+            'categories': categories,
+            'today': today,
+            'blogs': blogs,
+            'geodata': geodata,
+            'temp': temp,
+            'img': img,
+            'description': description,
+            'form': Search()
+        }
+
+        return render(request, "newspaper/error.html", context)
+
+    context = {
+        'page_obj': page_obj,
+        'categories': categories,
+        'today': today,
+        'blogs': blogs,
+        'geodata': geodata,
+        'temp': temp,
+        'img': img,
+        'description': description,
+        'form': Search()
+    }
+
+    return render(request, "newspaper/category.html", context)
 
 def new(request, new):
     
@@ -81,14 +126,39 @@ def new(request, new):
         if new in related_new:
             related_new = New.objects.filter(category= new.category).order_by('id').reverse()[2:4]
 
-    return render(request, "newspaper/new.html", {"required_new": required_new, "today": today, "categories": categories, 'blogs': blogs,
-    'geodata': geodata, 'temp': temp, 'img': img, 'description': description, 'related_new': related_new, "form":Search()})
+    context = {
+        'required_new': required_new,
+        'today': today,
+        'categories': categories,
+        'blogs': blogs,
+        'geodata': geodata,
+        'temp': temp,
+        'img': img,
+        'description': description,
+        'related_new': related_new,
+        'form': Search()
+    }
+
+    return render(request, "newspaper/new.html", context)
 
 def blog(request, id):
     if request.method == 'GET':
         required_blog = Blog.objects.filter(pk=id)
-        return render(request, "newspaper/blog.html", {"required_blog": required_blog, "today": today, "categories": categories, 'blogs': blogs,
-        'geodata': geodata, 'temp': temp, 'img': img, 'description': description, 'required_blog': required_blog, "form":Search()})
+
+        context = {
+            'required_blog': required_blog,
+            'today': today,
+            'categories': categories,
+            'blogs': blogs,
+            'geodata': geodata,
+            'temp': temp,
+            'img': img,
+            'description': description,
+            'required_blog': required_blog,
+            'form': Search()
+        }
+
+        return render(request, "newspaper/blog.html", context)
 
 def allnews(request):
     news = New.objects.all().order_by('id').reverse()
@@ -96,7 +166,13 @@ def allnews(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, "newspaper/allnews.html", {'page_obj': page_obj, "today": today, "form":Search()})
+    context = {
+        'page_obj': page_obj,
+        'today': today,
+        'form': Search()
+    }
+
+    return render(request, "newspaper/allnews.html", context)
 
 def allblogs(request):
     news = Blog.objects.all().order_by('id').reverse()
@@ -104,7 +180,13 @@ def allblogs(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, "newspaper/allnews.html", {'page_obj': page_obj, "today": today, "form":Search()})
+    context = {
+        'page_obj': page_obj,
+        'today': today,
+        'form': Search()
+    }
+
+    return render(request, "newspaper/allnews.html", context)
 
 def contact(request):
     if request.method == 'POST':
