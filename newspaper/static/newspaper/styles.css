@@ -1,4 +1,7 @@
 /* MEDIA QUERIES */
+body {
+  background-color: light grey;
+}
 @media (max-width: 1600px){
     #blogs{
         display: none
@@ -13,7 +16,7 @@
     .last-news{
         width: 30%;
     }
-    
+
 }
 
 @media (min-width: 360px) and (max-width:1000px){
@@ -30,7 +33,7 @@
         font-size: 50px;
     }
 
-    
+
     .date{
         font-size:26px;
     }
@@ -94,23 +97,23 @@
         font-size: 40px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
     }
-    
+
     .title-page{
         font-size: 42px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
     }
-    
+
     .description-page{
         font-size: 46px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         color: #3b3b3b;
     }
-    
+
     .page-content{
         font-size: 60px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
-    
+
     .title-two{
         font-size: 46px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
@@ -165,7 +168,7 @@
         font-size: 200%;
         color: black;
         text-decoration: none;
-        
+
     }
 
     .sidebar a:hover{
@@ -181,7 +184,7 @@
 
     .abrir-cerrar {
         color: #2E88C7;
-        font-size:3rem;   
+        font-size:3rem;
     }
 
     #cerrar {
@@ -202,7 +205,7 @@
         font-family: 'Times New Roman', Times, serif;
     }
 
-        
+
     .date{
         font-size:14px;
     }
@@ -224,23 +227,23 @@
         font-size: 30px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
     }
-    
+
     .title-page{
         font-size: 40px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
     }
-    
+
     .description-page{
         font-size: 26px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         color: #3b3b3b;
     }
-    
+
     .page-content{
         font-size: 26px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
-    
+
     .title-two{
         font-size: 22px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
@@ -295,7 +298,7 @@
         font-size: 110%;
         color: black;
         text-decoration: none;
-        
+
     }
 
     .sidebar a:hover{
@@ -311,7 +314,7 @@
 
     .abrir-cerrar {
         color: #2E88C7;
-        font-size:1rem;   
+        font-size:1rem;
     }
 
     #cerrar {
